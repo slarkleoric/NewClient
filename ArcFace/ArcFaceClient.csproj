@@ -79,6 +79,7 @@
     <Compile Include="Commands\CommandExtends.cs" />
     <Compile Include="Common\LocalKeys.cs" />
     <Compile Include="Controls\AttachProperty.cs" />
+    <Compile Include="Controls\BulletCheckBox.cs" />
     <Compile Include="Controls\XButton.cs" />
     <Compile Include="Controls\XDialog.cs" />
     <Compile Include="Controls\XPage.cs" />
@@ -93,6 +94,10 @@
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Contents\Styles\Base.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
