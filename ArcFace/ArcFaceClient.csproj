@@ -80,10 +80,21 @@
     <Compile Include="Common\LocalKeys.cs" />
     <Compile Include="Controls\AttachProperty.cs" />
     <Compile Include="Controls\BulletCheckBox.cs" />
+    <Compile Include="Controls\ControlHelper.cs" />
+    <Compile Include="Controls\DConverter.cs" />
     <Compile Include="Controls\XButton.cs" />
     <Compile Include="Controls\XDialog.cs" />
     <Compile Include="Controls\XPage.cs" />
     <Compile Include="Controls\XWindow.cs" />
+    <Compile Include="Converter\BooleanToVisibilityConverter.cs" />
+    <Compile Include="DesignControls\Adorners\ResizeRotateAdorner.cs" />
+    <Compile Include="DesignControls\Adorners\ResizeRotateChrome.cs" />
+    <Compile Include="DesignControls\Adorners\SizeAdorner.cs" />
+    <Compile Include="DesignControls\Adorners\SizeChrome.cs" />
+    <Compile Include="DesignControls\DesignerItemDecorator.cs" />
+    <Compile Include="DesignControls\MoveThumb.cs" />
+    <Compile Include="DesignControls\ResizeThumb.cs" />
+    <Compile Include="DesignControls\RotateThumb.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\VBase.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -95,6 +106,30 @@
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Page Include="Contents\Styles\Base.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contents\Styles\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contents\Styles\ContentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contents\Styles\DataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contents\Styles\Designs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Contents\Styles\ListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contents\Styles\Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -8,10 +8,20 @@
         mc:Ignorable="d"
         Title="LoginView" Height="450" Width="800">
     <Grid>
-        <StackPanel>
-            <k:BulletCheckBox Height="100" On="开" Off="关">bulletcheckbox</k:BulletCheckBox>
-            
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="5">
+                <Label  FontSize="12" FontWeight="Bold">BtnStyles</Label>
+                <Button Width="100" Height="30" Style="{StaticResource Btn-Base}" Margin="1">Btn-Base</Button>
+                <k:XButton Width="100" Height="30" Style="{StaticResource X-Btn}" Margin="1">X-Btn</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Link}" Margin="1">Btn-Link</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Default}" Margin="1">Btn-Default</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Bg}" Margin="1">Btn-Bg</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Primary}" Margin="1">Btn-Primary</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Success}" Margin="1">Btn-Success</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Info}" Margin="1">Btn-Info</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Warning}" Margin="1">Btn-Warning</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Danger}" Margin="1">Btn-Danger</k:XButton>
+            </StackPanel>
         </StackPanel>
-        
     </Grid>
 </Window>

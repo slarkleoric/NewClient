@@ -1,0 +1,217 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:k="clr-namespace:ArcFaceClient.Controls" >
+
+    <!--窗体按钮-->
+    <Style x:Key="Window-Btn" TargetType="{x:Type k:XButton}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Foreground" Value="{StaticResource C-BackgroundHoverBrush}"></Setter>
+        <Setter Property="HoverForeground" Value="{StaticResource C-BackgroundBrush}"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="Padding" Value="6"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Width" Value="32"></Setter>
+        <Setter Property="Height" Value="32"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type k:XButton}">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Border x:Name="PART_Bd" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"
+                                CornerRadius="{TemplateBinding k:AttachProperty.CornerRadius}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
+                                Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                        </Border>
+                        <TextBlock x:Name="PART_Icon" Style="{StaticResource K-Icon}" 
+                                   Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Icon}"
+                                   Margin="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=IconMargin}"></TextBlock>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="PART_Bd" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HoverBackground}"></Setter>
+                            <Setter Property="BorderBrush" TargetName="PART_Bd" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HoverBorder}"></Setter>
+                            <Setter Property="Foreground" TargetName="PART_Icon" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HoverForeground}"></Setter>
+                            <Setter Property="Opacity" TargetName="PART_Bd" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HoverOpacity}"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+   
+    <!--重设XButton 模板-->
+    <ControlTemplate x:Key="T-Button" TargetType="{x:Type k:XButton}">
+        <!-- 我们将 Grid 用作根，原因在于这便于添加更多的元素来自定义按钮 -->
+        <Grid x:Name="PART_Root">
+            <Border x:Name="PART_Border" BorderThickness="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path= BorderThickness}" SnapsToDevicePixels="True"
+                    Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path= Background}"
+                    BorderBrush="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path= BorderBrush}" 
+                    CornerRadius="{TemplateBinding k:AttachProperty.CornerRadius}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" SnapsToDevicePixels="True">
+                    <TextBlock x:Name="PART_Icon" HorizontalAlignment="Left" Margin="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path= IconMargin}"
+                           RenderTransformOrigin="0.5,0.5" Style="{StaticResource K-Icon}" Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path= Icon}" 
+                           FontSize="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path= IconSize}" 
+                           Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path= Foreground}" >
+                        <TextBlock.RenderTransform>
+                            <RotateTransform x:Name="PART_transIcon" Angle="0"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <Image x:Name="PART_Image" Source="{TemplateBinding k:AttachProperty.IconImage}" Width="{TemplateBinding k:AttachProperty.IconWidth}"
+                           RenderTransformOrigin="0.5,0.5" Height="{TemplateBinding k:AttachProperty.IconHeight}" Margin="{TemplateBinding k:AttachProperty.FIconMargin}">
+                        <Image.RenderTransform>
+                            <RotateTransform x:Name="PART_transImage" Angle="0"/>
+                        </Image.RenderTransform>
+                    </Image>
+                    <TextBlock x:Name="PART_Text" Text="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" FontWeight="{TemplateBinding FontWeight}"></TextBlock>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" TargetName="PART_Border" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path= HoverBackground}"/>
+                <Setter Property="BorderBrush" TargetName="PART_Border" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path= HoverBorder}"/>
+                <Setter Property="Foreground" TargetName="PART_Text" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path= HoverForeground}" />
+                <Setter Property="Foreground" TargetName="PART_Icon" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path= HoverForeground}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.45"></Setter>
+                <Setter Property="Cursor" Value="No"></Setter>
+            </Trigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Icon}" Value="">
+                <Setter TargetName="PART_Icon" Property="Visibility" Value="Collapsed"></Setter>
+            </DataTrigger>
+            <Trigger Property="k:AttachProperty.IconImage" Value="{x:Null}">
+                <Setter TargetName="PART_Image" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <!--icon的动画触发器-->
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="true"></Condition>
+                    <Condition Property="AllowsAnimation" Value="true"></Condition>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PART_transIcon" Storyboard.TargetProperty="Angle" To="180" Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetName="PART_transImage" Storyboard.TargetProperty="Angle" To="180" Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.EnterActions>
+                <MultiTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PART_transIcon" Storyboard.TargetProperty="Angle" To="0" Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetName="PART_transImage" Storyboard.TargetProperty="Angle" To="0" Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.ExitActions>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    <!--设计Button的基本样式-->
+    <Style  x:Key="Btn-Base" TargetType="Button" BasedOn="{x:Null}">
+        <Setter Property="SnapsToDevicePixels" Value="True"></Setter>
+        <Setter Property="Background" Value="{DynamicResource C-BackgroundBrush}"></Setter>
+        <!--<Setter Property="BorderBrush" Value="{DynamicResource C-BorderBrush}"></Setter>-->
+        <Setter Property="Foreground" Value="{DynamicResource C-ForegroundBrush}"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Height" Value="32"></Setter>
+        <Setter Property="Width" Value="92"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontWeight" Value="Medium"></Setter>
+        <Setter Property="FontStretch" Value="Medium"></Setter>
+    </Style>
+
+    <!--设计XButton的基本样式-->
+    <Style x:Key="X-Btn" TargetType="{x:Type k:XButton}" BasedOn="{StaticResource Btn-Base}">
+        <Setter Property="Template" Value="{StaticResource T-Button}"></Setter>
+        <Setter Property="BorderBrush" Value="{StaticResource FontBrush}"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource FontBrush}"></Setter>
+        <Setter Property="k:AttachProperty.CornerRadius" Value="4"></Setter>
+        <Setter Property="IconMargin" Value="0,1,3,0"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="HoverForeground" Value="{StaticResource PrimaryBrush}"></Setter>
+        <Setter Property="HoverBorder" Value="{StaticResource PrimaryBrush}"></Setter>
+        <Setter Property="HoverBackground" Value="{StaticResource C-BackgroundBrush}"></Setter>
+    </Style>
+   
+    <!--衍生样式-->
+    <Style x:Key="Btn-Link" TargetType="{x:Type k:XButton}" BasedOn="{StaticResource X-Btn}">
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Height" Value="Auto"></Setter>
+        <Setter Property="Width" Value="Auto"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+        <Setter Property="HoverBackground" Value="Transparent"></Setter>
+    </Style>
+    <Style x:Key="Btn-Default" TargetType="{x:Type k:XButton}" BasedOn="{StaticResource X-Btn}">
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Background" Value="{StaticResource ButtonBrush}"></Setter>
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonBrush}"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource C-BackgroundBrush}"></Setter>
+        <Setter Property="HoverBackground" Value="{StaticResource PrimaryBrush}"></Setter>
+        <Setter Property="HoverForeground" Value="{StaticResource C-BackgroundBrush}"></Setter>
+    </Style>
+    <Style x:Key="Btn-Bg" TargetType="{x:Type k:XButton}" BasedOn="{StaticResource X-Btn}">
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Background" Value="{StaticResource BgButtonBrush}"></Setter>
+        <Setter Property="BorderBrush" Value="{StaticResource BgButtonBrush}"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}"></Setter>
+        <Setter Property="HoverBackground" Value="{StaticResource BgButtonBrush}"></Setter>
+        <!--<Setter Property="HoverForeground" Value="{StaticResource PrimaryBrush}"></Setter>-->
+    </Style>
+    <Style x:Key="Btn-Primary" TargetType="{x:Type k:XButton}"  BasedOn="{StaticResource X-Btn}">
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource C-BackgroundBrush}"></Setter>
+        <Setter Property="Background" Value="{StaticResource C-PrimaryBrush}"></Setter>
+        <Setter Property="BorderBrush" Value="{StaticResource C-PrimaryBorderBrush}"></Setter>
+        <Setter Property="HoverBackground" Value="{StaticResource C-PrimaryHoverBrush}"></Setter>
+        <Setter Property="HoverBorder" Value="{StaticResource C-PrimaryBorderHoverBrush}"></Setter>
+        <Setter Property="HoverForeground" Value="{StaticResource C-BackgroundBrush}"></Setter>
+    </Style>
+    <Style x:Key="Btn-Success" TargetType="{x:Type k:XButton}"  BasedOn="{StaticResource X-Btn}">
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource C-BackgroundBrush}"></Setter>
+        <Setter Property="Background" Value="{StaticResource C-SuccessBrush}"></Setter>
+        <Setter Property="BorderBrush" Value="{StaticResource C-SuccessBorderBrush}"></Setter>
+        <Setter Property="HoverBackground" Value="{StaticResource C-SuccessHoverBrush}"></Setter>
+        <Setter Property="HoverBorder" Value="{StaticResource C-SuccessBorderHoverBrush}"></Setter>
+        <Setter Property="HoverForeground" Value="{StaticResource C-BackgroundBrush}"></Setter>
+    </Style>
+    <Style x:Key="Btn-Info" TargetType="{x:Type k:XButton}"  BasedOn="{StaticResource X-Btn}">
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource C-BackgroundBrush}"></Setter>
+        <Setter Property="Background" Value="{StaticResource C-InfoBrush}"></Setter>
+        <Setter Property="BorderBrush" Value="{StaticResource C-InfoBorderBrush}"></Setter>
+        <Setter Property="HoverBackground" Value="{StaticResource C-InfoHoverBrush}"></Setter>
+        <Setter Property="HoverBorder" Value="{StaticResource C-InfoBorderHoverBrush}"></Setter>
+        <Setter Property="HoverForeground" Value="{StaticResource C-BackgroundBrush}"></Setter>
+    </Style>
+    <Style x:Key="Btn-Warning" TargetType="{x:Type k:XButton}"  BasedOn="{StaticResource X-Btn}">
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource C-BackgroundBrush}"></Setter>
+        <Setter Property="Background" Value="{StaticResource C-WarningBrush}"></Setter>
+        <Setter Property="BorderBrush" Value="{StaticResource C-WarningBorderBrush}"></Setter>
+        <Setter Property="HoverBackground" Value="{StaticResource C-WarningHoverBrush}"></Setter>
+        <Setter Property="HoverBorder" Value="{StaticResource C-WarningBorderHoverBrush}"></Setter>
+        <Setter Property="HoverForeground" Value="{StaticResource C-BackgroundBrush}"></Setter>
+    </Style>
+    <Style x:Key="Btn-Danger" TargetType="{x:Type k:XButton}"  BasedOn="{StaticResource X-Btn}">
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource C-BackgroundBrush}"></Setter>
+        <Setter Property="Background" Value="{StaticResource C-DangerBrush}"></Setter>
+        <Setter Property="BorderBrush" Value="{StaticResource C-DangerBorderBrush}"></Setter>
+        <Setter Property="HoverBackground" Value="{StaticResource C-DangerHoverBrush}"></Setter>
+        <Setter Property="HoverBorder" Value="{StaticResource C-DangerBorderHoverBrush}"></Setter>
+        <Setter Property="HoverForeground" Value="{StaticResource C-BackgroundBrush}"></Setter>
+    </Style>
+    
+    
+    
+    
+</ResourceDictionary>

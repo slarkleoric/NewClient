@@ -9,12 +9,15 @@
     <ResourceDictionary>
       <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:ArcFaceClient.ViewModel" />
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="/Kaixin.Huiwu;component/Resources/lang/zh_cn.xaml" />-->
+                <!--<ResourceDictionary Source="/ArcFaceClient;component/Resources/lang/zh_cn.xaml" />-->
                 <ResourceDictionary Source="/Contents/Styles/Base.xaml" />
-                <!--<ResourceDictionary Source="/Contents/Styles/Button.xaml" />
-                <ResourceDictionary Source="/Contents/Styles/Default.xaml" />
+                <ResourceDictionary Source="/Contents/Styles/Button.xaml" />
+                <ResourceDictionary Source="/Contents/Styles/Window.xaml" />
+                <ResourceDictionary Source="/Contents/Styles/ListView.xaml" />
+                <ResourceDictionary Source="/Contents/Styles/ContentControl.xaml" />
+                
                 <ResourceDictionary Source="/Contents/Styles/DataGrid.xaml" />
-                <ResourceDictionary Source="/Contents/Styles/Designs.xaml" />-->
+                <!--<ResourceDictionary Source="/Contents/Styles/Designs.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
   </ResourceDictionary>
        

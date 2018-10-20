@@ -103,7 +103,7 @@
 
     <!--图标字体-->
     <Style x:Key="K-Icon" TargetType="TextBlock">
-        <Setter Property="FontFamily" Value="/Kaixin.Huiwu;component/Resources/#iconfont"></Setter>
+        <Setter Property="FontFamily" Value="/ArcFaceClient;component/Resources/#iconfont"></Setter>
         <Setter Property="TextAlignment" Value="Center"></Setter>
         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>

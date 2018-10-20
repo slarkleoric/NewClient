@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="AppService\BaseService.cs" />
     <Compile Include="AppService\GlobalDataService.cs" />
+    <Compile Include="Dtos\DesignDto.cs" />
     <Compile Include="Dtos\ClientSecretDto.cs" />
     <Compile Include="Models\PropertyAttribute.cs" />
     <Compile Include="Models\Entities\EntityBase.cs" />
