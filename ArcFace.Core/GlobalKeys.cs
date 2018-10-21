@@ -12,6 +12,8 @@ namespace ArcFace.Core
       
         public const string Host = "rest_host";
 
+        public const string LoginAccount = "login_account";
+
         /// <summary> 数据模式：0,在线;1,离线 </summary>
         public const string DataMode = "data_mode";
         /// <summary> 登录凭证 </summary>

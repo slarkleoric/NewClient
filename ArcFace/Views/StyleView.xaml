@@ -1,0 +1,29 @@
+﻿<k:XWindow x:Class="ArcFaceClient.Views.StyleView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ArcFaceClient.Views"
+        xmlns:k="clr-namespace:ArcFaceClient.Controls"
+        mc:Ignorable="d" 
+        xmlns:cmd="clr-namespace:ArcFaceClient.Commands"
+        Style="{StaticResource K-Window}" ShowHeader="True" k:AttachProperty.CornerRadius="4"
+        Title="Login" Height="400" Width="610">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="5">
+                <Label  FontSize="12" FontWeight="Bold">BtnStyles</Label>
+                <Button Width="100" Height="30" Style="{StaticResource Btn-Base}" Margin="1">Btn-Base</Button>
+                <k:XButton Width="100" Height="30" Style="{StaticResource X-Btn}" Margin="1">X-Btn</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Link}" Margin="1">Btn-Link</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Default}" Margin="1">Btn-Default</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Bg}" Margin="1">Btn-Bg</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Primary}" Margin="1">Btn-Primary</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Success}" Margin="1">Btn-Success</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Info}" Margin="1">Btn-Info</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Warning}" Margin="1">Btn-Warning</k:XButton>
+                <k:XButton Width="100" Height="30" Style="{StaticResource Btn-Danger}" Margin="1">Btn-Danger</k:XButton>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</k:XWindow>

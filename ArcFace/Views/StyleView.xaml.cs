@@ -1,6 +1,4 @@
-﻿using ArcFaceClient.Commands;
-using ArcFaceClient.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,22 +17,11 @@ namespace ArcFaceClient.Views
     /// <summary>
     /// LoginView.xaml 的交互逻辑
     /// </summary>
-    public partial class LoginView 
+    public partial class StyleView
     {
-        public LoginView()
+        public StyleView()
         {
             InitializeComponent();
-            this.InitModel(new VLogin());
-        }
-
-        private void AccountChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void PasswordChanged(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

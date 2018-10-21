@@ -210,8 +210,16 @@
         <Setter Property="HoverBorder" Value="{StaticResource C-DangerBorderHoverBrush}"></Setter>
         <Setter Property="HoverForeground" Value="{StaticResource C-BackgroundBrush}"></Setter>
     </Style>
-    
-    
-    
-    
+
+
+    <ControlTemplate x:Key="T-ImgBtn" TargetType="k:XButton">
+        <Grid x:Name="grid1" Background="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}" >
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="grid1" Property="Background" Value="{Binding HoverBackground, RelativeSource={RelativeSource TemplatedParent}}"></Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
 </ResourceDictionary>

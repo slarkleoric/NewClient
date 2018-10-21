@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <s:String x:Key="L-AppName">刷脸</s:String>
+    <s:String x:Key="L-DataSynchronization">同步数据</s:String>
+    <s:String x:Key="L-WindowClose">关闭</s:String>
+    <s:String x:Key="L-WindowMin">最小化</s:String>
+    <s:String x:Key="L-WindowMax">最大化</s:String>
+    <s:String x:Key="L-WindowRestore">还原</s:String>
+    <s:String x:Key="L-Online">在线中</s:String>
+    <s:String x:Key="L-Offline">已离线</s:String>
+    <s:String x:Key="L-Switch">切换</s:String>
+    <s:String x:Key="L-CreateAct">创建活动</s:String>
+    <s:String x:Key="L-OpenExpansion">开启扩展屏</s:String>
+    <s:String x:Key="L-CloseExpansion">关闭扩展屏</s:String>
+    <s:String x:Key="L-Login">登录</s:String>
+    <s:String x:Key="L-Logout">退出登录</s:String>
+</ResourceDictionary>

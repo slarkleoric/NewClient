@@ -1,5 +1,6 @@
 ﻿
 using ArcFace.Core.DbHelper;
+using ArcFace.Core.Dtos;
 using ArcFace.Core.Helper;
 using ArcFace.Core.Logging;
 using ArcFaceClient.Commands;
@@ -15,6 +16,14 @@ namespace ArcFaceClient
 {
     public partial class App
     {
+
+        /// <summary>
+        /// 账号信息
+        /// </summary>
+        public static UserInfoDto CurrentUser;
+
+
+
         private readonly ILogger _logger = LogManager.Logger<App>();
 
         [DllImport("user32")]

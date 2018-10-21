@@ -209,7 +209,7 @@ namespace ArcFaceClient.Controls
         private void InitializeTheme()
         {
             Application.Current.Resources.MergedDictionaries.Add(
-                Application.LoadComponent(new Uri("/ArcFace;component/Resources/lang/zh_cn.xaml",
+                Application.LoadComponent(new Uri("/ArcFaceClient;component/Resources/lang/zh_cn.xaml",
                     UriKind.Relative)) as ResourceDictionary);
             if (_dragable)
             {

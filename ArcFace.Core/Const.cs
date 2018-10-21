@@ -32,7 +32,7 @@ namespace ArcFace.Core
         /// <summary> 
         /// admin数据库密码
         /// </summary>
-        internal static string AdminDbPassword = "admin123";
+        internal static string AdminDbPassword = string.Empty;//"admin123";
         /// <summary>
         /// admin数据库文件名
         /// </summary>
@@ -41,7 +41,7 @@ namespace ArcFace.Core
         /// <summary> 
         /// data数据库密码
         /// </summary>
-        internal static string MeetingDbPassword = "data123";
+        internal static string MeetingDbPassword = string.Empty;//"data123";
         /// <summary>
         /// data数据库文件名
         /// </summary>

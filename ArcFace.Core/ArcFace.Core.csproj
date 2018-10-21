@@ -69,9 +69,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppService\BaseService.cs" />
-    <Compile Include="AppService\GlobalDataService.cs" />
+    <Compile Include="AppService\UserAppService.cs" />
+    <Compile Include="AppService\AdminDataService.cs" />
+    <Compile Include="Dtos\AccountInfo.cs" />
     <Compile Include="Dtos\DesignDto.cs" />
     <Compile Include="Dtos\ClientSecretDto.cs" />
+    <Compile Include="Models\Entities\Enroll.cs" />
+    <Compile Include="Models\Entities\Meeting.cs" />
+    <Compile Include="Models\Entities\Meeting_Group.cs" />
+    <Compile Include="Models\Entities\Sign_Record.cs" />
     <Compile Include="Models\PropertyAttribute.cs" />
     <Compile Include="Models\Entities\EntityBase.cs" />
     <Compile Include="Enums\DataMode.cs" />

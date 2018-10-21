@@ -1,6 +1,4 @@
-﻿using ArcFaceClient.Commands;
-using ArcFaceClient.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,29 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ArcFaceClient.Views
+namespace ArcFaceClient.Views.Pages
 {
     /// <summary>
-    /// LoginView.xaml 的交互逻辑
+    /// FaceSign.xaml 的交互逻辑
     /// </summary>
-    public partial class LoginView 
+    public partial class FaceSign : Page
     {
-        public LoginView()
+        public FaceSign()
         {
             InitializeComponent();
-            this.InitModel(new VLogin());
-        }
-
-        private void AccountChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void PasswordChanged(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

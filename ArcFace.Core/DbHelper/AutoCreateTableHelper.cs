@@ -53,7 +53,9 @@ namespace ArcFace.Core.DbHelper
             {
                 conn.Open();
                 if (!string.IsNullOrWhiteSpace(Const.AdminDbPassword))
+                {
                     conn.ChangePassword(Const.AdminDbPassword);
+                }
                 conn.Execute(GlobalTables());
             }
             InitDataSql();

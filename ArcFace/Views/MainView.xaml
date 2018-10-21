@@ -6,75 +6,26 @@
         xmlns:cmd="clr-namespace:ArcFaceClient.Commands"
         xmlns:k="clr-namespace:ArcFaceClient.Controls" 
         Background="Transparent"
-        mc:Ignorable="d"  Height="730" Width="1024"  >
-   
+        mc:Ignorable="d"  Height="700" Width="1024"  >
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="64"></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="210"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="180"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
-  
-       
-        <!--用户-->
-        <WrapPanel Grid.Row="1" Grid.Column="0" Height="100" VerticalAlignment="Top">
-            <Grid Margin="30,30,10,0">
-                <Ellipse Width="40" Height="40"  Cursor="Hand" x:Name="Avatar">
-                    <Ellipse.Fill>
-                        <ImageBrush ></ImageBrush>
-                    </Ellipse.Fill>
-                </Ellipse>
-                <Ellipse Width="8" Height="8" Fill="#FF24FE8E" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,3,6"></Ellipse>
-            </Grid>
-            <StackPanel Margin="0,30,0,0">
-                <TextBlock HorizontalAlignment="Left" Text="{Binding User.Name}"  FontWeight="Bold" Margin="0,6,0,5"></TextBlock>
-                <WrapPanel>
-                    
-                </WrapPanel>
-            </StackPanel>
-        </WrapPanel>
-        <WrapPanel x:Name="UserModal" Visibility="Collapsed" Orientation="Vertical" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Margin="15,80,0,0" ZIndex="10">
-            <Border MaxWidth="260" Margin="5" BorderThickness="1" CornerRadius="4">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="5" Opacity="0.4"  ShadowDepth="0" RenderingBias="Performance"></DropShadowEffect>
-                </Border.Effect>
-                <Grid Margin="17,20,17,10">
-                    <Path Data="M0,10 L10,0 L20,10"
-                          Margin="0,-30,0,0"></Path>
-                    
-                       
-                        
-                       
-                </Grid>
-            </Border>
-        </WrapPanel>
         <!--菜单-->
-        <WrapPanel Grid.Row="1" Grid.Column="0" Margin="0,100,0,40">
-            <ListView  ItemsSource="{Binding Menus}" SelectedItem="{Binding SelectedItem}" 
-                      SelectionMode="Single"></ListView>
-        </WrapPanel>
-        <!--Pages-->
-        <DockPanel Grid.Row="1" Grid.Column="1" Margin="20,0,20,0" LastChildFill="True">
-            <Frame x:Name="PageContext" NavigationUIVisibility="Hidden" DockPanel.Dock="Right" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"></Frame>
-        </DockPanel>
-        <!--Footer-->
-        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,25">
-            <TextBlock Text="©2017 四川开心科技有限公司" FontSize="12" Foreground="#FF5B6773" FontFamily="微软雅黑" Margin="0,0,0,6"></TextBlock>
-            <TextBlock Text="客服电话：400-0616-520" FontSize="12" Foreground="#FF5B6773" FontFamily="微软雅黑" HorizontalAlignment="Center"></TextBlock>
-        </StackPanel>
-        <WrapPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="&#xe6f2;" Margin="5,0"></TextBlock>
-            <TextBlock Text="{Binding ConnectionState}" Foreground="#FF414246" Margin="0,2"></TextBlock>
-        </WrapPanel>
-        <DockPanel Grid.Row="2" Grid.Column="1">
-            <TextBlock HorizontalAlignment="Right" Margin="0,0,20,0" VerticalAlignment="Center" ToolTip="{Binding TooltipTime}"
-                       Text="{Binding TimeNow,StringFormat={}{0:yyyy/MM/dd HH:mm}}">
-            </TextBlock>
+        <ListView Grid.Row="1" Grid.Column="0" Margin="0,63,0,80" HorizontalAlignment="Center"
+                  Style="{StaticResource K-Menu}"
+                  ItemContainerStyle="{StaticResource K-Menu-Item}" 
+                  ItemsSource="{Binding Menus}" 
+                  SelectedItem="{Binding SelectedItem}"  SelectionMode="Single"/>
+
+        <DockPanel Grid.Row="1" Grid.Column="1"  LastChildFill="True">
+            <Frame x:Name="PageContext" NavigationUIVisibility="Hidden" DockPanel.Dock="Right" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Focusable="False"/>
         </DockPanel>
     </Grid>
 </k:XWindow>
