@@ -256,6 +256,14 @@ namespace ArcFace.Core.DbHelper
                 {
                     sql.Append(" PRIMARY KEY");
                 }
+
+                //UNIQUE
+                var unique = field.GetAttribute<UniqueAttribute>();
+                if (unique != null)
+                {
+                    sql.Append(" UNIQUE");
+                }
+
                 //默认值
                 var def = field.GetAttribute<DefaultValueAttribute>();
                 if (def != null)
@@ -263,6 +271,7 @@ namespace ArcFace.Core.DbHelper
                     var value = def.Value ?? field.PropertyType.Default();
                     sql.Append($" DEFAULT {value}");
                 }
+
                 sql.Append(",");
             }
             return string.Concat(sql.ToString().TrimEnd(','), ");");

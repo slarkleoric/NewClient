@@ -14,12 +14,20 @@ namespace ArcFace.Core.Models.Entities
         public Guid meeting_id { get; set; }
 
         /// <summary> 分组名称 </summary>
-        [Require]
+        [Require,Unique]
         public string group_name { get; set; }
+
+        public DateTime create_date { get; set; }
 
         /// <summary>
         /// 备注
         /// </summary>
         public string comment { get; set; }
+
+        [DefaultValue(0)]
+        /// <summary>
+        /// 删除状态
+        /// </summary>
+        public bool is_del { get; set; }
     }
 }

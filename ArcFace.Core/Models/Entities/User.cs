@@ -9,7 +9,6 @@ namespace ArcFace.Core.Models.Entities
     {
         [Key, Require]
         public Guid id { get; set; }
-
         [Require]
         public string account { get; set; }
 
@@ -21,6 +20,11 @@ namespace ArcFace.Core.Models.Entities
         public DateTime create_date { get; set; }
 
         public string comment { get; set; }
-       
+
+        [DefaultValue(0)]
+        /// <summary>
+        /// 删除状态
+        /// </summary>
+        public bool is_del { get; set; }
     }
 }

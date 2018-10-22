@@ -18,4 +18,6 @@ namespace ArcFace.Core.Models
             Value = value;
         }
     }
+
+    public class UniqueAttribute : Attribute { }
 }

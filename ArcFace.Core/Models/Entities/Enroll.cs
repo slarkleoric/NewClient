@@ -17,6 +17,8 @@ namespace ArcFace.Core.Models.Entities
         /// </summary>
         [Require]
         public Guid group_id { get; set; }
+        
+       
 
         /// <summary>
         /// 嘉宾姓名

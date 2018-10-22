@@ -36,7 +36,7 @@ namespace ArcFaceClient.ViewModel
                 _password = value;
                 RaisePropertyChanged(() => Password);
                 if (string.IsNullOrEmpty(value))
-                    UserAppService.UpdateAccountInfo(new AccountInfo() { Account = Account }); //密码更改时重新保存账号
+                    AdminDataService.Instance.InsertOrUpdate(GlobalKeys.LoginAccount, new AccountInfo() { Account = Account });
             }
         }
         private bool _issave;
@@ -82,7 +82,7 @@ namespace ArcFaceClient.ViewModel
         {
             //登录
             LoginCommand = new RelayCommand(Login, Logincheck);
-            var info = UserAppService.GetAccountInfo();
+            var info = AdminDataService.Instance.Query<AccountInfo>(GlobalKeys.LoginAccount) ?? new AccountInfo();
             Account = info.Account;
 
             if ((DateTime.Now - info.LoginTime)?.Days < 7)
@@ -110,7 +110,7 @@ namespace ArcFaceClient.ViewModel
 
                 //保存登信息
                 if (IsSave) ac.PassWord = Password;
-                UserAppService.UpdateAccountInfo(ac);
+                AdminDataService.Instance.InsertOrUpdate(GlobalKeys.LoginAccount, ac);
 
                 //获取UserInfo
                 var user = new UserInfoDto();  //NewRestHelper.Instance.UserInfo();
@@ -133,7 +133,7 @@ namespace ArcFaceClient.ViewModel
             else
             {
                 //没有成功，保存登录名
-                UserAppService.UpdateAccountInfo(new AccountInfo() { Account = Account });
+                AdminDataService.Instance.InsertOrUpdate(GlobalKeys.LoginAccount, new AccountInfo() { Account = Account });
                 ErrorVisible = Visibility.Visible;
                 //ErrorInfo = result.Message;
             }

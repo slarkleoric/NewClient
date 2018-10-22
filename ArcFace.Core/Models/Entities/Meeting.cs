@@ -35,6 +35,8 @@ namespace ArcFace.Core.Models.Entities
         /// 会议详情备注
         /// </summary>
         public string comment { get; set; }
+
+        public bool is_del { get; set; }
        
     }
 }

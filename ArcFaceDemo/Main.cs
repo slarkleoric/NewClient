@@ -17,7 +17,7 @@ namespace FaceRecognization
     public partial class Main : Form
     {
         /// <summary>
-        /// 虹软SDK的AppId
+        /// 虹软SDK的AppId 
         /// </summary>
         const string AppId = "2Fs3z4SLcg7X4Cde9ShkjEZmHAVQ6Cf4xV3czLxyVPLg";
         /// <summary>
