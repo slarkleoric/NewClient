@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcFaceClient", "ArcFace\Ar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcFace.Core", "ArcFace.Core\ArcFace.Core.csproj", "{8A8145F4-5374-4D3A-95EA-4777FBCE499E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcFaceDemo", "ArcFaceDemo\ArcFaceDemo.csproj", "{2C5C66D9-6E91-4BC4-8D39-18CBEB880ACD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcApi", "ArcApi\ArcApi.csproj", "{82EAF21C-2B67-40F0-BCE0-58D95AF48BE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{8A8145F4-5374-4D3A-95EA-4777FBCE499E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A8145F4-5374-4D3A-95EA-4777FBCE499E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A8145F4-5374-4D3A-95EA-4777FBCE499E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C5C66D9-6E91-4BC4-8D39-18CBEB880ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C5C66D9-6E91-4BC4-8D39-18CBEB880ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C5C66D9-6E91-4BC4-8D39-18CBEB880ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C5C66D9-6E91-4BC4-8D39-18CBEB880ACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82EAF21C-2B67-40F0-BCE0-58D95AF48BE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82EAF21C-2B67-40F0-BCE0-58D95AF48BE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82EAF21C-2B67-40F0-BCE0-58D95AF48BE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82EAF21C-2B67-40F0-BCE0-58D95AF48BE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
