@@ -24,7 +24,8 @@ namespace ArcFaceClient.Views
 
         private void AccountChanged(object sender, TextChangedEventArgs e)
         {
-
+            _model.Pzw = "";
+            _model.ResetError();
         }
 
         private void PasswordChanged(object sender, RoutedEventArgs e)

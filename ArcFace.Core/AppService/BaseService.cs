@@ -10,7 +10,7 @@ namespace ArcFace.Core.AppService
 
         protected BaseService(string dbName = null)
         {
-            _dbName = dbName ?? Const.AppName;
+            _dbName = dbName ?? Const.MeetingDbName;
         }
 
         /// <summary> 获取数据库连接 </summary>

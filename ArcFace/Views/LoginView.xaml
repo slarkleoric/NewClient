@@ -23,12 +23,12 @@
                 <TextBlock Text="刷脸签到" FontSize="18" Foreground="{StaticResource SecondFontBrush}" ></TextBlock>
             </StackPanel>
             <StackPanel Margin="0,0,0,0">
-                <Grid x:Name="ErrorPanel" Height="22" Margin="5" Width="244" Visibility="Hidden">
+                <Grid x:Name="ErrorPanel" Height="22" Margin="5" Width="244" Visibility="{Binding ErrorVisible}">
                     <Border  Background="Red" Opacity="0.08">
                     </Border>
                     <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" >
                         <Image Stretch="None" Source="/ArcFaceClient;component/Contents/Images/warning.png" Margin="5,0,5,0"></Image>
-                        <TextBlock  x:Name="ErrorTxt" FontSize="12" HorizontalAlignment="Center"  Foreground="#f10025" ></TextBlock>
+                        <TextBlock  x:Name="ErrorTxt" FontSize="12" HorizontalAlignment="Center"  Foreground="#f10025" Text="{Binding ErrorInfo}"></TextBlock>
                     </StackPanel>
                 </Grid>
                 <TextBox x:Name="Account" k:AttachProperty.Watermark="输入登录账号" k:AttachProperty.IconImage="/Contents/Images/account.png" k:AttachProperty.IconWidth="22" k:AttachProperty.CornerRadius="4"

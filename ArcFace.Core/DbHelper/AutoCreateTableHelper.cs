@@ -104,7 +104,7 @@ namespace ArcFace.Core.DbHelper
 
             if (File.Exists(dbPath)) //如果升级 存在文件,转移文件在初始化数据
             {
-                var backupPath = $"__old_{Const.AppName}_{DateTime.Now:yyyyMMddHHmm}".DbPath();
+                var backupPath = $"__old_{Const.MeetingDbName}_{DateTime.Now:yyyyMMddHHmm}".DbPath();
                 var fi = new FileInfo(dbPath);
                 fi.MoveTo(backupPath);
             }
@@ -141,7 +141,7 @@ namespace ArcFace.Core.DbHelper
         /// <summary> 备份数据库 </summary>
         public static string Backup()
         {
-            var dbPath = Const.AppName.DbPath();
+            var dbPath = Const.MeetingDbName.DbPath();
             if (!File.Exists(dbPath))
                 return null;
             var backupPath = CommonHelper.Guid16.DbPath();
@@ -155,7 +155,7 @@ namespace ArcFace.Core.DbHelper
         {
             if (!File.Exists(path))
                 return;
-            var dbPath = Const.AppName.DbPath();
+            var dbPath = Const.MeetingDbName.DbPath();
             var fi = new FileInfo(path);
             fi.MoveTo(dbPath);
         }

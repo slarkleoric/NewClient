@@ -12,14 +12,7 @@ namespace ArcFaceClient.ViewModel
 {
     public class VLogin : VBase
     {
-        public ICommand LoginCommand
-        {
-            get
-            {
-
-                return new Commands.RelayCommand(Login, Logincheck);
-            }
-        }
+        public ICommand LoginCommand { get; }
         
         #region 账号和密码
 
@@ -87,10 +80,10 @@ namespace ArcFaceClient.ViewModel
         public VLogin()
         {
             //登录
-            //LoginCommand = new RelayCommand(Login, Logincheck,true);
+            LoginCommand = new RelayCommand(Login, Logincheck);
+
             var info = AdminDataService.Instance.Query<AccountInfo>(GlobalKeys.LoginAccount) ?? new AccountInfo();
             Account = info.Account;
-
             if ((DateTime.Now - info.LoginTime)?.Days < 7)
                 Pzw = info.PassWord;
             if (!string.IsNullOrEmpty(Pzw))
@@ -105,7 +98,7 @@ namespace ArcFaceClient.ViewModel
             ResetError();
 
             //默认账号
-            if(Account == "admin" && Pzw == "123456")
+            if(Account == "admin" && Pzw == "111111")
             {
                 var ac = new AccountInfo
                 {
@@ -116,6 +109,7 @@ namespace ArcFaceClient.ViewModel
 
                 var win = new ActivityView();
                 LocalSysCmds.OpenWindow(win);
+                return;
             }
 
             var user = UserAppService.Instance.Login(Account.Trim().ToLower(), Pzw.Trim().ToLower());
@@ -150,7 +144,7 @@ namespace ArcFaceClient.ViewModel
         private bool Logincheck()
         {
             //var ele = Element as LoginView;
-            return !string.IsNullOrWhiteSpace(Account)  ;
+            return !string.IsNullOrWhiteSpace(Account) && !string.IsNullOrWhiteSpace(Pzw);
         }
 
         #endregion

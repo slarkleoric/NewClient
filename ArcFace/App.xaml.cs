@@ -54,7 +54,7 @@ namespace ArcFaceClient
 
             Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
-            new ActivityView().Show();
+            new LoginView().Show();
             base.OnStartup(e);
         }
 
