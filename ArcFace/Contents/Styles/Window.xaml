@@ -42,7 +42,7 @@
                 <ControlTemplate TargetType="ContentControl">
                     <WrapPanel>
                         <k:XButton ToolTip="{StaticResource L-WindowMin}" Command="{x:Static cmd:LocalSysCmds.MinimizeWindowCommand}" Style="{StaticResource Window-Btn}" 
-                                   Icon="{StaticResource Icon-Min}" HoverBackground="{StaticResource C-BackgroundBrush}" HoverOpacity="0.4" k:AttachProperty.CornerRadius="4" 
+                                   Icon="{StaticResource Icon-Min}" HoverBackground="{StaticResource C-BackgroundBrush}" HoverOpacity="0.4" k:AttachProperty.CornerRadius="4"  Margin="0,4,0,0"
                                   ></k:XButton>
                         <k:XButton x:Name="WinBtnMax" ToolTip="{StaticResource L-WindowMax}" Command="{x:Static cmd:LocalSysCmds.MaximizeWindowCommand}" Style="{StaticResource Window-Btn}" 
                                    Icon="{StaticResource Icon-Max}" HoverBackground="{StaticResource C-BackgroundBrush}" HoverOpacity="0.4" k:AttachProperty.CornerRadius="4"></k:XButton>

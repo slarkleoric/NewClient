@@ -19,12 +19,11 @@ namespace ArcFaceClient.Views
     /// <summary>
     /// ActivityView.xaml 的交互逻辑
     /// </summary>
-    public partial class ActivityView : Window
+    public partial class ActivityView 
     {
         public ActivityView()
         {
             InitializeComponent();
-
             this.InitModel(new VActivity());
         }
     }

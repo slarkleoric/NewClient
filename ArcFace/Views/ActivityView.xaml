@@ -1,14 +1,156 @@
-﻿<Window x:Class="ArcFaceClient.Views.ActivityView"
+﻿<k:XWindow x:Class="ArcFaceClient.Views.ActivityView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ArcFaceClient.Views"
-        mc:Ignorable="d"
-        Title="ActivityView" Height="450" Width="800">
-    <Grid>
-        <TextBox Text="{Binding Account,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"></TextBox>
+        xmlns:k="clr-namespace:ArcFaceClient.Controls"
+           xmlns:cmd="clr-namespace:ArcFaceClient.Commands"
+           xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        mc:Ignorable="d" Style="{StaticResource K-Window}" ShowHeader="False" Background="Transparent" k:AttachProperty.CornerRadius="6"
+        Title="{StaticResource L-AppName}" Height="730" Width="1024">
+    <Window.Resources>
+        <Style x:Key="ActivityItem" TargetType="ListBoxItem">
+            <Setter Property="Background" Value="#FFF7F8FF"></Setter>
+            <Setter Property="BorderBrush" Value="#FFE3E3E3"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Margin="0,0,0,20" Padding="20,25,20,20">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="34"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Rectangle Width="5" Height="24" Fill="{StaticResource SecondaryBrush}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="-20,0,0,0"></Rectangle>
+                                <Border Grid.Row="0" BorderBrush="#FFE3E3E3" BorderThickness="0,0,0,1" Padding="0,0,0,10">
+                                    <DockPanel>
+                                        <WrapPanel HorizontalAlignment="Left">
+                                            <TextBlock Text="{Binding Meeting_Name}" FontSize="18" Foreground="{StaticResource PrimaryBrush}"></TextBlock>
+                                        </WrapPanel>
+                                        <WrapPanel HorizontalAlignment="Right">
+                                            <TextBlock Text="{Binding Meeting_Code,StringFormat=ID:{0}}" FontSize="18" Foreground="{StaticResource FontBrush}"></TextBlock>
+                                        </WrapPanel>
+                                    </DockPanel>
+                                </Border>
+                                <Grid Grid.Row="1" Margin="0,10,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"></RowDefinition>
+                                        <!--<RowDefinition Height="30"></RowDefinition>-->
+                                        <RowDefinition Height="50"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <WrapPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="时间：{0:yyyy-MM-dd HH:mm:ss} 至 {1:yyyy-MM-dd HH:mm:ss}">
+                                                    <Binding Path="Begin_Date" />
+                                                    <Binding Path="End_Date" />
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock ToolTip="{Binding Address,StringFormat=地点：{0}}" Text="{Binding Address,StringFormat=地点：{0}}" MaxWidth="470" TextTrimming="CharacterEllipsis" FontSize="14"></TextBlock>
+                                    </WrapPanel>
+                                    <!--<WrapPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Contacts,StringFormat=联系人姓名：{0}}" FontSize="14"></TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Contacts_Tel,StringFormat=联系人电话：{0}}" FontSize="14"></TextBlock>
+                                    </WrapPanel>-->
+                                    <WrapPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom">
+                                        <k:XButton Content="报名二维码" Style="{StaticResource X-Btn}" Width="120" Height="40" Foreground="#FF282828" Margin="0,0,20,0"
+                                                   Command="{Binding DataContext.QrcodeCommand,ElementName=ActivityList}" 
+                                                   CommandParameter="{Binding DataContext,RelativeSource={RelativeSource Self}}"></k:XButton>
+                                        <k:XButton Content="导入参会名单" Style="{StaticResource X-Btn}" Width="120" Height="40" Foreground="#FF282828" Margin="0,0,20,0"
+                                                   Command="{Binding DataContext.ImportParticipantsCommand,ElementName=ActivityList}" 
+                                                   CommandParameter="{Binding DataContext,RelativeSource={RelativeSource Self}}"></k:XButton>
+                                        <k:XButton Content="签到员设置" Style="{StaticResource X-Btn}" Width="120" Height="40" Foreground="#FF282828" Margin="0,0,20,0"
+                                                   Command="{Binding DataContext.SettingCommand,ElementName=ActivityList}" 
+                                                   CommandParameter="{Binding DataContext,RelativeSource={RelativeSource Self}}"></k:XButton>
+                                        <!--<k:XButton Content="编辑" Command="{Binding DataContext.UpdateActivity,ElementName=ActivityList}" CommandParameter="{Binding DataContext,RelativeSource={RelativeSource Self}}" 
+                                                   Style="{StaticResource K-Btn}" Width="120" Height="40" FontSize="16" Foreground="#FF282828" Margin="0,0,20,0"></k:XButton>-->
 
-        <Button Command="{Binding LoginCommand}" Width="100" Height="30" ></Button>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                                        <k:XButton Content="进入签到" Style="{StaticResource Btn-Default}" Width="120" Height="40"
+                                                   Command="{Binding DataContext.EnterSignCommand,ElementName=ActivityList}" 
+                                                   CommandParameter="{Binding DataContext,RelativeSource={RelativeSource Self}}"></k:XButton>
+                                    </WrapPanel>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFEFF1FE"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="10" />
+        </i:EventTrigger>
+       
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="210"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Grid.Column="0" Background="#FF313FA0" CornerRadius="6,0,0,0"></Border>
+        <Border Grid.Row="0" Grid.Column="1" Background="{StaticResource PrimaryBrush}" CornerRadius="0,6,0,0"></Border>
+        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Background="White" CornerRadius="0,0,6,6"></Border>
+        <!--Logo-->
+        <WrapPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image Source="../Contents/Images/logo_1.png" Height="49" Width="134" ToolTip="{StaticResource L-AppName}"></Image>
+        </WrapPanel>
+        <WrapPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="40,0,0,0">
+            <TextBox x:Name="Keyword"  k:AttachProperty.Watermark="活动名称关键字查找" Padding="20,0,0,0" Background="#FFE6E8F2" k:AttachProperty.HoverBackground="#FFFBFBFD" 
+                     k:AttachProperty.HoverBorder="#FF9295A4" Height="32" Width="270"></TextBox>
+            <k:XButton Content="搜索" Style="{StaticResource X-Btn}" BorderThickness="0" Margin="15,0,0,0" Width="80"
+                       Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=Keyword,Path=Text}"></k:XButton>
+        </WrapPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Margin="415,0,135,0">
+            <k:XButton Content="{StaticResource L-CreateAct}" Style="{StaticResource X-Btn}" BorderThickness="0"
+                       Width="100" Margin="0" k:AttachProperty.IconImage="/Contents/Images/add.png" k:AttachProperty.IconWidth="16" k:AttachProperty.FIconMargin="0,0,5,0"
+                       Command="{Binding AddCommand}" ></k:XButton>
+            <k:XButton Content="退出登录" Margin="10,0,0,0" Style="{StaticResource X-Btn}" Command="{Binding LogoutCommand}"></k:XButton>
+        </StackPanel>
+        <WrapPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="12,0">
+            <ContentControl Style="{StaticResource WindowBtns}" />
+        </WrapPanel>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="20">
+            <StackPanel x:Name="NothingPanel" VerticalAlignment="Center" 
+                        Visibility="{Binding HasActivity,Converter={x:Static k:DConverter.BooleanToVisibilityConverter},ConverterParameter=1}">
+                <!--<Image Height="160" Width="160" Source="/Contents/Images/5555.png"></Image>-->
+                <TextBlock FontSize="16" Margin="0,10,0,0" Foreground="{StaticResource SecondFontBrush}" Text="这里什么都没有~"
+                           ></TextBlock>
+                <TextBlock FontSize="16" Margin="0,10,0,0" Foreground="{StaticResource SecondFontBrush}" Text="这里什么都没有，快去创建活动吧~"
+                          ></TextBlock>
+                <k:XButton Icon="{StaticResource Icon-Add}" Style="{StaticResource Btn-Link}" FontSize="16" Margin="0,20,0,0" Content="立即创建"
+                         
+                           Command="{x:Static cmd:LocalSysCmds.OpenUrlCommand}" CommandParameter="/home"></k:XButton>
+            </StackPanel>
+            <ScrollViewer x:Name="ListPanel" 
+                          Visibility="{Binding HasActivity,Converter={x:Static k:DConverter.BooleanToVisibilityConverter}}" 
+                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden">
+                <ListView x:Name="ActivityList" Background="Transparent" BorderThickness="0" 
+                          ItemContainerStyle="{StaticResource ActivityItem}" ItemsSource="{Binding ActivityList}">
+              
+                </ListView>
+            </ScrollViewer>
+        </Grid>
     </Grid>
-</Window>
+</k:XWindow>

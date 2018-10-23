@@ -11,9 +11,17 @@ namespace ArcFace.Core.AppService
     {
         private const string Table = "meeting";
 
-        public List<Meeting> Query()
+        public List<Meeting> Query(string keyword=null)
         {
-            const string sql = "SELECT * FROM [meeting] ORDER BY [begin_date] DESC";
+            string sql = "";
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                sql = "SELECT * FROM [meeting] where [meeting_name] like %"+ keyword + "% ORDER BY [begin_date] DESC";
+            }
+            else
+            {
+                sql = "SELECT * FROM [meeting] ORDER BY [begin_date] DESC";
+            }
             return UseConn(conn => conn.Query<Meeting>(sql).ToList());
         }
 
