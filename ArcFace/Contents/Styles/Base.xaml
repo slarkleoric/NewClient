@@ -271,6 +271,7 @@
     </Style>
     <!--PasswordBox-->
     <Style TargetType="{x:Type PasswordBox}">
+        <Setter Property="ContextMenu"  Value="{DynamicResource TextBoxContextMenu}"/>
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FontSize" Value="{StaticResource FontSize}"></Setter>
         <Setter Property="FontFamily" Value="{StaticResource FontFamily}"></Setter>
@@ -306,8 +307,8 @@
                                           VerticalAlignment="Stretch" Background="{x:Null}" />
                             <!--水印-->
                             <TextBlock x:Name="PART_Placeholder"  Padding="{TemplateBinding Padding}" Visibility="Collapsed"
-                                       Text="{TemplateBinding k:AttachProperty.Watermark}" Grid.Column="1"
-                                       Foreground="{TemplateBinding Foreground}" IsHitTestVisible="False" Opacity="0.3"
+                                       Text="{TemplateBinding k:AttachProperty.Watermark}" Grid.Column="1" FontSize="{TemplateBinding k:AttachProperty.WatermarkSize}"
+                                       Foreground="{TemplateBinding Foreground}" IsHitTestVisible="False" Opacity="0.4"
                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="5,2,5,2" />
                         </Grid>
@@ -328,7 +329,7 @@
                         </Trigger>
                         <Trigger Property="IsFocused" Value="True">
                             <Setter  Property="BorderBrush" Value="{StaticResource C-BorderHoverBrush}"/>
-                            <Setter TargetName="PART_Placeholder" Property="Opacity" Value="0.2"></Setter>
+                            <Setter TargetName="PART_Placeholder" Property="Opacity" Value="0.3"></Setter>
                         </Trigger>
                         <!--不可用-->
                         <Trigger Property="IsEnabled" Value="False">

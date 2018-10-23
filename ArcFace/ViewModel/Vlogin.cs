@@ -3,7 +3,6 @@ using ArcFace.Core.AppService;
 using ArcFace.Core.Dtos;
 using ArcFaceClient.Commands;
 using ArcFaceClient.Views;
-using GalaSoft.MvvmLight.Command;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,8 +12,15 @@ namespace ArcFaceClient.ViewModel
 {
     public class VLogin : VBase
     {
-        public ICommand LoginCommand { get; }
+        public ICommand LoginCommand
+        {
+            get
+            {
 
+                return new Commands.RelayCommand(Login, Logincheck);
+            }
+        }
+        
         #region 账号和密码
 
         private string _account = string.Empty;
@@ -24,17 +30,17 @@ namespace ArcFaceClient.ViewModel
             set
             {
                 _account = value;
-                RaisePropertyChanged(() => Account);
+                OnPropertyChanged(() => Account);
             }
         }
-        private string _password = string.Empty;
-        public string Password
+        private string _pzw = string.Empty;
+        public string Pzw
         {
-            get => _password;
+            get => _pzw;
             set
             {
-                _password = value;
-                RaisePropertyChanged(() => Password);
+                _pzw = value;
+                OnPropertyChanged(() => Pzw);
                 if (string.IsNullOrEmpty(value))
                     AdminDataService.Instance.InsertOrUpdate(GlobalKeys.LoginAccount, new AccountInfo() { Account = Account });
             }
@@ -46,7 +52,7 @@ namespace ArcFaceClient.ViewModel
             set
             {
                 _issave = value;
-                RaisePropertyChanged(() => IsSave);
+                OnPropertyChanged(() => IsSave);
             }
         }
         #endregion
@@ -60,7 +66,7 @@ namespace ArcFaceClient.ViewModel
             set
             {
                 _errorinfo = value;
-                RaisePropertyChanged(() => ErrorInfo);
+                OnPropertyChanged(() => ErrorInfo);
             }
         }
 
@@ -72,7 +78,7 @@ namespace ArcFaceClient.ViewModel
             set
             {
                 _errorVisible = value;
-                RaisePropertyChanged(() => ErrorVisible);
+                OnPropertyChanged(() => ErrorVisible);
             }
         }
 
@@ -81,13 +87,13 @@ namespace ArcFaceClient.ViewModel
         public VLogin()
         {
             //登录
-            LoginCommand = new RelayCommand(Login, Logincheck);
+            //LoginCommand = new RelayCommand(Login, Logincheck,true);
             var info = AdminDataService.Instance.Query<AccountInfo>(GlobalKeys.LoginAccount) ?? new AccountInfo();
             Account = info.Account;
 
             if ((DateTime.Now - info.LoginTime)?.Days < 7)
-                Password = info.PassWord;
-            if (!string.IsNullOrEmpty(Password))
+                Pzw = info.PassWord;
+            if (!string.IsNullOrEmpty(Pzw))
             {
                 IsSave = true;
             }
@@ -97,53 +103,54 @@ namespace ArcFaceClient.ViewModel
         private void Login()
         {
             ResetError();
-            
 
-            //NewRestHelper.Instance.Login(Account, Password, ref cookie);
-            if (true)
+            //默认账号
+            if(Account == "admin" && Pzw == "123456")
             {
                 var ac = new AccountInfo
                 {
                     Account = Account,
                     LoginTime = DateTime.Now
                 };
+                App.CurrentUser = ac;
+
+                var win = new ActivityView();
+                LocalSysCmds.OpenWindow(win);
+            }
+
+            var user = UserAppService.Instance.Login(Account.Trim().ToLower(), Pzw.Trim().ToLower());
+
+            if (user != null)
+            {
+                var ac = new AccountInfo
+                {
+                    Account = user.account,
+                    LoginTime = DateTime.Now
+                };
 
                 //保存登信息
-                if (IsSave) ac.PassWord = Password;
+                if (IsSave) ac.PassWord = user.password;
                 AdminDataService.Instance.InsertOrUpdate(GlobalKeys.LoginAccount, ac);
 
-                //获取UserInfo
-                var user = new UserInfoDto();  //NewRestHelper.Instance.UserInfo();
 
-                if (user == null)
-                {
-                    ErrorVisible = Visibility.Visible;
-                    ErrorInfo = "";// result.Message;
+                App.CurrentUser = ac;
 
-                    Const.DefaultLogger.Error("Login成功，获取用户信息失败！");
-                }
-                else
-                {
-                    user.Login_Date = DateTime.Now;
-                    App.CurrentUser = user;
-                    var win = new ActivityView();
-                    LocalSysCmds.OpenWindow(win);
-                }
+                var win = new ActivityView();
+                LocalSysCmds.OpenWindow(win);
             }
             else
             {
                 //没有成功，保存登录名
                 AdminDataService.Instance.InsertOrUpdate(GlobalKeys.LoginAccount, new AccountInfo() { Account = Account });
                 ErrorVisible = Visibility.Visible;
-                //ErrorInfo = result.Message;
+                ErrorInfo = "用户名密码错误！";
             }
         }
 
         private bool Logincheck()
         {
-            var ele = Element as LoginView;
-            return !string.IsNullOrWhiteSpace(ele?.Account.Text) && !Validation.GetHasError(ele.Account) &&
-                   !string.IsNullOrWhiteSpace(ele.Password.Password) && !Validation.GetHasError(ele.Password);
+            //var ele = Element as LoginView;
+            return !string.IsNullOrWhiteSpace(Account)  ;
         }
 
         #endregion

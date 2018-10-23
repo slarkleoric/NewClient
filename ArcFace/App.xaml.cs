@@ -20,7 +20,7 @@ namespace ArcFaceClient
         /// <summary>
         /// 账号信息
         /// </summary>
-        public static UserInfoDto CurrentUser;
+        public static AccountInfo CurrentUser;
 
 
 
@@ -54,7 +54,7 @@ namespace ArcFaceClient
 
             Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
-            new LoginView().Show();
+            new ActivityView().Show();
             base.OnStartup(e);
         }
 

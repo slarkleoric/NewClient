@@ -1,7 +1,6 @@
 ﻿using ArcFaceClient.Controls;
 using ArcFaceClient.Views;
 using ArcFaceClient.ViewModel;
-using GalaSoft.MvvmLight.Command;
 using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;

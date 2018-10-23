@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="ActivityView" Height="450" Width="800">
     <Grid>
-        
+        <TextBox Text="{Binding Account,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"></TextBox>
+
+        <Button Command="{Binding LoginCommand}" Width="100" Height="30" ></Button>
     </Grid>
 </Window>

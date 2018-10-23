@@ -1,18 +1,8 @@
 ﻿using ArcFaceClient.Commands;
+using ArcFaceClient.Controls;
 using ArcFaceClient.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ArcFaceClient.Views
 {
@@ -21,10 +11,15 @@ namespace ArcFaceClient.Views
     /// </summary>
     public partial class LoginView 
     {
+        private VLogin _model;
+
+
         public LoginView()
         {
             InitializeComponent();
-            this.InitModel(new VLogin());
+
+            _model = new VLogin();
+            this.InitModel(_model);
         }
 
         private void AccountChanged(object sender, TextChangedEventArgs e)
@@ -34,7 +29,13 @@ namespace ArcFaceClient.Views
 
         private void PasswordChanged(object sender, RoutedEventArgs e)
         {
+            _model.ResetError();
 
+            if (!(sender is PasswordBox box))
+                return;
+            var pwd = AttachProperty.GetPassword(box);
+            if (pwd != box.Password)
+                AttachProperty.SetPassword(box, box.Password);
         }
     }
 }

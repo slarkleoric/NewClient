@@ -45,13 +45,14 @@
                              k:AttachProperty.FIconMargin="10,0,0,0" PasswordChar="*" Height="34" Width="244" Margin="0,5,0,0" k:AttachProperty.CornerRadius="4"
                              Validation.ErrorTemplate="{StaticResource ErrorTemplate}" PasswordChanged="PasswordChanged">
                     <k:AttachProperty.Password>
-                        <Binding  Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" Path="Password" >
+                        <Binding  Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" Path="Pzw" >
                             <!--<Binding.ValidationRules>
                                 <rule:PasswordRule />
                             </Binding.ValidationRules>-->
                         </Binding>
                     </k:AttachProperty.Password>
                 </PasswordBox>
+                
                 <CheckBox Style="{StaticResource checkbox1}" HorizontalAlignment="Left" Margin="5,10,0,0" Width="100"  FontSize="12" IsChecked="{Binding IsSave}">记住密码</CheckBox>
                   
            

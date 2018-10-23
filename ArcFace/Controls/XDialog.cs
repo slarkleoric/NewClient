@@ -1,5 +1,5 @@
-﻿using ArcFaceClient.Common;
-using GalaSoft.MvvmLight.Messaging;
+﻿using ArcFace.Core.Messaging;
+using ArcFaceClient.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,12 +17,12 @@ namespace ArcFaceClient.Controls
         {
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
             MaxHeight = SystemParameters.WorkArea.Height - 10;
-
-            Messenger.Default.Register<bool>(this, LocalKeys.MtCloseDialog, result =>
+            
+            Messenger.Default.Register<bool>(this, result =>
             {
                 _dialogResult = result;
                 Close();
-            });
+            }, LocalKeys.MtCloseDialog);
         }
 
         public new bool? Show(Window owner = null)
@@ -50,9 +50,7 @@ namespace ArcFaceClient.Controls
 
         public static void CloseDialog(bool result = false)
         {
-            //Messenger.Default.Notify<bool, XDialog>(result, LocalKeys.MtCloseDialog);
-
-            Messenger.Default.Send<bool>(result, LocalKeys.MtCloseDialog);
+            Messenger.Default.Notify<bool, XDialog>(result, LocalKeys.MtCloseDialog);
         }
 
         protected override void OnClosing(CancelEventArgs e)

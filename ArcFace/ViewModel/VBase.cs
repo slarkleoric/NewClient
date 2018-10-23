@@ -1,20 +1,23 @@
-﻿using ArcFaceClient.Commands;
+﻿using ArcFace.Core;
+using ArcFace.Core.Messaging;
+using ArcFaceClient.Commands;
 using ArcFaceClient.Controls;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Windows;
 
 namespace ArcFaceClient.ViewModel
 {
-    public abstract class VBase : ViewModelBase
+    public abstract class VBase : KNotifyPropertyChanged
     {
-        
-
         public FrameworkElement Element { get; set; }
 
-     
-
+        private IMessenger _messengerInstance;
+        public IMessenger MessengerInstance
+        {
+            get => _messengerInstance ?? Messenger.Default;
+            set => _messengerInstance = value;
+        }
+        
         protected VBase() { }
 
         protected VBase(IMessenger messenger)
@@ -46,6 +49,11 @@ namespace ArcFaceClient.ViewModel
             where T : XDialog, new()
         {
             new T().Show();
+        }
+
+        public virtual void Cleanup()
+        {
+            MessengerInstance.Unregister(this);
         }
     }
 }

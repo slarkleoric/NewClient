@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ArcFaceClient.Commands;
+using ArcFaceClient.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,8 @@ namespace ArcFaceClient.Views
         public ActivityView()
         {
             InitializeComponent();
+
+            this.InitModel(new VActivity());
         }
     }
 }
