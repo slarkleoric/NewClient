@@ -52,29 +52,8 @@
                                             </TextBlock.Text>
                                         </TextBlock>
                                     </WrapPanel>
-                                    <WrapPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-                                        <TextBlock ToolTip="{Binding Address,StringFormat=地点：{0}}" Text="{Binding Address,StringFormat=地点：{0}}" MaxWidth="470" TextTrimming="CharacterEllipsis" FontSize="14"></TextBlock>
-                                    </WrapPanel>
-                                    <!--<WrapPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding Contacts,StringFormat=联系人姓名：{0}}" FontSize="14"></TextBlock>
-                                    </WrapPanel>
-                                    <WrapPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding Contacts_Tel,StringFormat=联系人电话：{0}}" FontSize="14"></TextBlock>
-                                    </WrapPanel>-->
-                                    <WrapPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom">
-                                        <k:XButton Content="报名二维码" Style="{StaticResource X-Btn}" Width="120" Height="40" Foreground="#FF282828" Margin="0,0,20,0"
-                                                   Command="{Binding DataContext.QrcodeCommand,ElementName=ActivityList}" 
-                                                   CommandParameter="{Binding DataContext,RelativeSource={RelativeSource Self}}"></k:XButton>
-                                        <k:XButton Content="导入参会名单" Style="{StaticResource X-Btn}" Width="120" Height="40" Foreground="#FF282828" Margin="0,0,20,0"
-                                                   Command="{Binding DataContext.ImportParticipantsCommand,ElementName=ActivityList}" 
-                                                   CommandParameter="{Binding DataContext,RelativeSource={RelativeSource Self}}"></k:XButton>
-                                        <k:XButton Content="签到员设置" Style="{StaticResource X-Btn}" Width="120" Height="40" Foreground="#FF282828" Margin="0,0,20,0"
-                                                   Command="{Binding DataContext.SettingCommand,ElementName=ActivityList}" 
-                                                   CommandParameter="{Binding DataContext,RelativeSource={RelativeSource Self}}"></k:XButton>
-                                        <!--<k:XButton Content="编辑" Command="{Binding DataContext.UpdateActivity,ElementName=ActivityList}" CommandParameter="{Binding DataContext,RelativeSource={RelativeSource Self}}" 
-                                                   Style="{StaticResource K-Btn}" Width="120" Height="40" FontSize="16" Foreground="#FF282828" Margin="0,0,20,0"></k:XButton>-->
-
-                                    </WrapPanel>
+                                    
+                                    
                                     <WrapPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                                         <k:XButton Content="进入签到" Style="{StaticResource Btn-Default}" Width="120" Height="40"
                                                    Command="{Binding DataContext.EnterSignCommand,ElementName=ActivityList}" 

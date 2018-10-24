@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:ArcFaceClient.Contents.Styles"
                     xmlns:k="clr-namespace:ArcFaceClient.Controls"
                     xmlns:cmd="clr-namespace:ArcFaceClient.Commands"
                     xmlns:arcface="clr-namespace:ArcFaceClient"
@@ -65,7 +64,7 @@
 
 
     <!--ListView-->
-    <Style TargetType="ListView">
+    <Style  TargetType="ListView">
         <Setter Property="Background" Value="{StaticResource DgBgBrush}"></Setter>
         <Setter Property="BorderBrush" Value="{StaticResource DgBorderBrush}"></Setter>
     </Style>
@@ -87,7 +86,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="ListViewItem">
+    <Style  TargetType="ListViewItem">
         <Setter Property="Height" Value="36"></Setter>
         <Setter Property="Template">
             <Setter.Value>

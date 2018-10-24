@@ -13,11 +13,10 @@
                 <ResourceDictionary Source="/Contents/Styles/Base.xaml" />
                 <ResourceDictionary Source="/Contents/Styles/Button.xaml" />
                 <ResourceDictionary Source="/Contents/Styles/Window.xaml" />
-                <ResourceDictionary Source="/Contents/Styles/ListView.xaml" />
                 <ResourceDictionary Source="/Contents/Styles/ContentControl.xaml" />
-                
                 <ResourceDictionary Source="/Contents/Styles/DataGrid.xaml" />
                 <ResourceDictionary Source="/Contents/Styles/CheckBox.xaml" />
+                <ResourceDictionary Source="/Contents/Styles/ListView.xaml" />
             </ResourceDictionary.MergedDictionaries>
   </ResourceDictionary>
        
