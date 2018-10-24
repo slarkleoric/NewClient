@@ -79,6 +79,7 @@
     <Compile Include="Dtos\ClientSecretDto.cs" />
     <Compile Include="Messaging\Messenger.cs" />
     <Compile Include="Messaging\IMessenger.cs" />
+    <Compile Include="Models\ActivityDto.cs" />
     <Compile Include="Models\Entities\Enroll.cs" />
     <Compile Include="Models\Entities\Meeting.cs" />
     <Compile Include="Models\Entities\Meeting_Group.cs" />

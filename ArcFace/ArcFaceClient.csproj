@@ -85,12 +85,16 @@
     <Compile Include="DesignControls\MoveThumb.cs" />
     <Compile Include="DesignControls\ResizeThumb.cs" />
     <Compile Include="DesignControls\RotateThumb.cs" />
+    <Compile Include="ViewModel\Dialogs\VAddActivity.cs" />
     <Compile Include="ViewModel\VActivity.cs" />
     <Compile Include="ViewModel\VBase.cs" />
     <Compile Include="ViewModel\VLogin.cs" />
     <Compile Include="ViewModel\VMain.cs" />
     <Compile Include="Views\ActivityView.xaml.cs">
       <DependentUpon>ActivityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\AddActivityDialog.xaml.cs">
+      <DependentUpon>AddActivityDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -155,6 +159,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Dialogs\AddActivityDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -215,6 +223,7 @@
     <Content Include="Contents\config\application.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Contents\Images\dialog_close_hover.png" />
     <Resource Include="Contents\Images\logo_1.png" />
     <Resource Include="Contents\Images\win_restore.png" />
     <Resource Include="Contents\Images\add.png" />

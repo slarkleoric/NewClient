@@ -4,6 +4,7 @@ using ArcFace.Core.AppService;
 using ArcFace.Core.Dtos;
 using ArcFace.Core.Models.Entities;
 using ArcFaceClient.Commands;
+using ArcFaceClient.Views.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -70,6 +71,11 @@ namespace ArcFaceClient.ViewModel
                 AdminDataService.Instance.InsertOrUpdate(GlobalKeys.LoginAccount, App.CurrentUser);
 
                 LocalSysCmds.RestartApp();
+            });
+
+            AddCommand = new RelayCommand(() =>
+            {
+                new AddActivityDialog().Show();
             });
         }
 

@@ -191,7 +191,7 @@ namespace ArcFace.Core.DbHelper
         /// <typeparam name="T"></typeparam>
         /// <param name="whereField">根据哪个字段来修改</param>
         /// <returns></returns>
-        public static string UpdateSql<T>(string whereField) where T : EntityBase
+        public static string UpdateSql<T>(string whereField) where T :EntityBase
         {
             var type = typeof(T);
             var key = $"update_{type.FullName}";

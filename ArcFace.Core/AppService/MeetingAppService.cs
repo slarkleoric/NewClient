@@ -1,4 +1,5 @@
-﻿using ArcFace.Core.Models.Entities;
+﻿using ArcFace.Core.Models;
+using ArcFace.Core.Models.Entities;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,23 @@ namespace ArcFace.Core.AppService
                 sql = "SELECT * FROM [meeting] ORDER BY [begin_date] DESC";
             }
             return UseConn(conn => conn.Query<Meeting>(sql).ToList());
+        }
+
+        public Meeting QuerybyId(string id )
+        {
+             const string   sql = "SELECT * FROM [meeting] where [id] = @id";
+            
+            return UseConn(conn => conn.Query<Meeting>(sql, new { id }).FirstOrDefault());
+        }
+
+        public string GetNewCode()
+        {
+
+            const string sql = "SELECT count(*) FROM [meeting] ";
+
+            int count = UseConn(conn => conn.Query<int>(sql).First());
+
+            return (count+1).ToString().PadLeft(5, '0');
         }
 
         /// <summary>
