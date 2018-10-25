@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:k="clr-namespace:ArcFaceClient.Controls" xmlns:cmd="clr-namespace:ArcFaceClient.Commands"
-        Style="{StaticResource K-Dialog}" mc:Ignorable="d"
+        Style="{StaticResource X-Dialog}" mc:Ignorable="d"
         Title="{Binding WTitle}" Height="370" Width="420">
     <k:XDialog.Resources>
         <Style TargetType="TextBox">

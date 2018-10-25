@@ -223,6 +223,7 @@
     <Content Include="Contents\config\application.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Contents\Images\dialog_close.png" />
     <Resource Include="Contents\Images\dialog_close_hover.png" />
     <Resource Include="Contents\Images\logo_1.png" />
     <Resource Include="Contents\Images\win_restore.png" />

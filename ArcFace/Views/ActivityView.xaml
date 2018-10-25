@@ -6,7 +6,7 @@
         xmlns:k="clr-namespace:ArcFaceClient.Controls"
            xmlns:cmd="clr-namespace:ArcFaceClient.Commands"
            xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-        mc:Ignorable="d" Style="{StaticResource K-Window}" ShowHeader="False" Background="Transparent" k:AttachProperty.CornerRadius="6"
+        mc:Ignorable="d" Style="{StaticResource X-Window}" ShowHeader="False" Background="Transparent" k:AttachProperty.CornerRadius="6"
         Title="{StaticResource L-AppName}" Height="730" Width="1024">
     <Window.Resources>
         <Style x:Key="ActivityItem" TargetType="ListBoxItem">

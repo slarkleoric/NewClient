@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:k="clr-namespace:ArcFaceClient.Controls" 
         xmlns:cmd="clr-namespace:ArcFaceClient.Commands" ResizeMode="NoResize"
-        mc:Ignorable="d" Style="{StaticResource K-Window}" ShowHeader="False" 
+        mc:Ignorable="d" Style="{StaticResource X-Window}" ShowHeader="False" 
         k:AttachProperty.CornerRadius="2"
         FocusManager.FocusedElement="{Binding ElementName=Account}" Title="Login" Height="300" Width="430" >
     <Grid >

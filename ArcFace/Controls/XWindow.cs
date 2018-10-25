@@ -96,7 +96,7 @@ namespace ArcFaceClient.Controls
         }
 
         public XWindow()
-            : this(true, "K-Window")
+            : this(true, "X-Window")
         {
         }
 
